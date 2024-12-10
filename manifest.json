@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "MyAll Extension",
+  "version": "1.0",
+  "description": "MyAll Chrome extension.",
+  "permissions": ["sidePanel", "tabs", "activeTab", "storage"],
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/myall16.png",
+      "32": "icons/myall32.png",
+      "192": "icons/myall192.png"
+    }
+  }
+}

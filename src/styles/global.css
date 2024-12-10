@@ -1,0 +1,44 @@
+/* Hide the Chrome side panel header completely - multiple possible selectors */
+body > div.chrome-side-panel-header,
+.chrome-side-panel-header,
+[class*="side-panel-header"],
+[class*="sidepanel-header"],
+div[role="banner"],
+header.title-bar,
+.titlebar,
+[class*="header"],
+[class*="Header"],
+div[class*="title"],
+div[class*="Title"] {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  top: -999px !important;
+  pointer-events: none !important;
+}
+
+/* Force content to top */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100vh !important;
+  position: relative !important;
+}
+
+#root {
+  height: 100vh !important;
+  position: relative !important;
+  top: 0 !important;
+}
+
+/* Try to force any main content up */
+main,
+[role="main"],
+.main-content,
+#main-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}

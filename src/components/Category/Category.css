@@ -1,0 +1,5 @@
+.category-title {
+  text-align: left;
+  justify-content: flex-start; /* If using flexbox */
+  padding-left: 8px; /* Optional: adds some spacing from the left edge */
+}
