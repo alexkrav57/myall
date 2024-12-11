@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import CategoryGroup from "../CategoryGroup/CategoryGroup";
 import ListItem from "../ListItem/ListItem";
-import usePanelData from "../../hooks/usePanelData";
+import { usePanelData } from "../../hooks/usePanelData";
 import "./LeftPanel.css";
 import {
   openUrl,
@@ -11,7 +11,21 @@ import {
   getSiteTitle,
 } from "../../utils/chromeUtils";
 
-const LeftPanel = () => {
+interface Item {
+  id: number;
+  categoryId: number;
+  title: string;
+  description: string;
+  url: string;
+  icon: string;
+}
+
+interface Category {
+  id: number;
+  name: string;
+}
+
+const LeftPanel: React.FC = () => {
   const {
     categories,
     items,
@@ -22,7 +36,8 @@ const LeftPanel = () => {
     handleDragEnd,
     addItem,
   } = usePanelData();
-  const handleGrabUrl = async () => {
+
+  const handleGrabUrl = async (): Promise<void> => {
     const url = await queryCurrentUrl();
     const title = await getSiteTitle(url);
     console.log("grabUrl", url);
@@ -65,10 +80,10 @@ const LeftPanel = () => {
 
       <DragDropContext onDragEnd={handleDragEnd}>
         <div className="categories-container">
-          {categories.map((category) => {
+          {categories.map((category: Category) => {
             const categoryItems = items
-              .filter((item) => item.categoryId === category.id)
-              .map((item, index) => (
+              .filter((item: Item) => item.categoryId === category.id)
+              .map((item: Item, index: number) => (
                 <ListItem
                   key={item.id}
                   item={item}
